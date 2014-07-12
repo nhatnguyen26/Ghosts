@@ -59,7 +59,7 @@ public class LetterNode {
 	 * @param word the word to extend (assume the first letter is already checked)
 	 */
 	public void extendChildren(String word) {
-		if (word == "")
+		if (word.equals(""))
 			return;
 		char firstLetter = word.charAt(0);
 		LetterNode node = this.children.get((Character) firstLetter);
