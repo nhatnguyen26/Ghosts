@@ -24,6 +24,7 @@ public class Dictionary {
 		}
 	}
 	
+	
 	public Dictionary(String dictName) {
 		try {
 			root = buildDict(dictName,this.DEFAULT_LENGTH);
@@ -42,6 +43,10 @@ public class Dictionary {
 		}
 	}
 	
+	public Dictionary(LetterNode root){
+		this.root = root;
+	}
+		
 	private LetterNode buildDict(String fileName, int minLength) throws FileNotFoundException {
 		FileReader fr = new FileReader(fileName);
 		BufferedReader reader = new BufferedReader(fr);
