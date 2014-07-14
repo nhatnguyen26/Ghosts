@@ -9,14 +9,15 @@ public class HumanPlayer extends Player {
 	}
 
 	@Override
-	public char play() {
+	public char play(char lastPlayed) {
 		// TODO Auto-generated method stub
 		String inputStr;
 		Scanner input = new Scanner(System.in);
-		do {
+		System.out.print("Next character: ");
+		inputStr = input.nextLine();
+		while (inputStr.length() > 1) {
 			System.out.print("Next character: ");
-		} while((inputStr = input.nextLine()).length() > 1);
-		input.close();
+		}
 		return inputStr.charAt(0);
 	}
 

@@ -59,7 +59,7 @@ public class Dictionary {
 				//if a word is already complete, the longer word start with previous doesn't matter
 				if (!line.startsWith(prevLine) && line.length() >= minLength) {
 					added++;
-					root.extendChildren(line);
+					root.addWord(line);
 				}
 				prevLine = line;
 			}

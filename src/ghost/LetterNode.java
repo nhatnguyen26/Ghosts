@@ -1,4 +1,5 @@
 package ghost;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -11,7 +12,7 @@ public class LetterNode {
 	private char letter;
 	//use HashMap to take advantage of checking for member and access child Node
 	private HashMap<Character,LetterNode> children;
-	private HashMap<Integer,Character> branchDepth;
+	private HashMap<Character,ArrayList<Integer>> childDepths;
 	private int depth; //Node know it own depth
 	private LetterNode parent; //Node know it parent
 	
@@ -20,7 +21,7 @@ public class LetterNode {
 		this.parent = null;
 		this.depth = 0;
 		this.children = new HashMap<Character, LetterNode>();
-		this.branchDepth = new HashMap<Integer,Character>();
+		this.childDepths = new HashMap<Character,ArrayList<Integer>>();
 	}
 	
 	public LetterNode(char letter) {
@@ -38,8 +39,8 @@ public class LetterNode {
 		this.parent = parent;
 	}
 	
-	public Iterator<LetterNode> getChildrenIterator(){
-		return this.children.values().iterator();
+	public Iterator<Character> getChildrenIterator(){
+		return this.children.keySet().iterator();
 	}
 	
 	public int getDepth(){
@@ -54,11 +55,20 @@ public class LetterNode {
 		return this.parent;
 	}
 	
+	public void addWord(String word) {
+		extendChildren(word);
+	}
+	
+	public boolean isChildrenEmpty() {
+		return this.children.isEmpty();
+	}
+	
 	/*
 	 * Add children Node into the current Node to extend the tree
+	 * At the same time, update possible depths for all child Node.
 	 * @param word the word to extend (assume the first letter is already checked)
 	 */
-	public void extendChildren(String word) {
+	private void extendChildren(String word) {
 		if (word.equals(""))
 			return;
 		char firstLetter = word.charAt(0);
@@ -69,7 +79,15 @@ public class LetterNode {
 			this.children.put(firstLetter, node);
 		}
 		
+		ArrayList<Integer> possDepths = this.childDepths.get((Character) firstLetter);
+		if (possDepths == null) {
+			possDepths = new ArrayList<Integer>();
+			this.childDepths.put(firstLetter, possDepths);
+		}
+		possDepths.add(word.length());
+		
 		node.extendChildren(subStr);
+
 	}
 	
 	public LetterNode getChild(char letter) {
@@ -78,6 +96,10 @@ public class LetterNode {
 	
 	public boolean hasChild(char letter) {
 		return getChild(letter) != null;
+	}
+	
+	public ArrayList<Integer> getChildDepths(char letter) {
+		return this.childDepths.get((Character) letter);
 	}
 
 }

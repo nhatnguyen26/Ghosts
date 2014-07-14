@@ -27,6 +27,6 @@ public abstract class Player {
 		return this.name;
 	}
 	
-	public abstract char play();
+	public abstract char play(char lastPlayed);
 
 }
