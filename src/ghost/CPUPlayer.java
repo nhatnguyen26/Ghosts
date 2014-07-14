@@ -28,7 +28,8 @@ public class CPUPlayer extends Player {
 			if (isForceWin(testChar))
 				bestChar = testChar;
 		}
-
+		
+		currentPlay = currentPlay.getChild(bestChar);
 		return bestChar;
 	}
 	
@@ -46,7 +47,6 @@ public class CPUPlayer extends Player {
 		}
 		return forceWin;
 	}
-	
 	
 
 }

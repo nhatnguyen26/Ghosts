@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Ghost {
 	
-	private static Dictionary gameDict;
+	private Dictionary gameDict;
 	public static final int NUM_OF_PLAYERS = 2;
 	
 	private LetterNode gameState;
@@ -18,30 +18,29 @@ public class Ghost {
 	private ArrayList<Player> players;
 	
 	public Ghost(String humanName) {
-		if (Ghost.gameDict == null) {
-			Ghost.gameDict = new Dictionary();
-		}
-		this.gameState = Ghost.gameDict.getDict();
+		gameDict = new Dictionary();
+
+		this.gameState = gameDict.getDict();
 		this.players = new ArrayList<Player>();
 		this.players.add(new HumanPlayer(humanName,0));
-		this.players.add(new CPUPlayer(1, Ghost.gameDict));
+		this.players.add(new CPUPlayer(1, gameDict));
 	}
 	
 	public Ghost(String dictName, String humanName) {
-		Ghost.gameDict = new Dictionary(dictName);
-		this.gameState = Ghost.gameDict.getDict();
+		gameDict = new Dictionary(dictName);
+		this.gameState = gameDict.getDict();
 		this.players = new ArrayList<Player>();
 		this.players.add(new HumanPlayer(humanName,0));
-		this.players.add(new CPUPlayer(1, Ghost.gameDict));
+		this.players.add(new CPUPlayer(1, gameDict));
 		
 	}
 	
 	public Ghost(String dictName, int length, String humanName) {
-		Ghost.gameDict = new Dictionary(dictName,length);
-		this.gameState = Ghost.gameDict.getDict();
+		gameDict = new Dictionary(dictName,length);
+		this.gameState = gameDict.getDict();
 		this.players = new ArrayList<Player>();
 		this.players.add(new HumanPlayer(humanName,0));
-		this.players.add(new CPUPlayer(1, Ghost.gameDict));
+		this.players.add(new CPUPlayer(1, gameDict));
 	}
 	
 	private Player nextPlayer(int turn) {
