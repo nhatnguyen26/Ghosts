@@ -12,6 +12,8 @@ public class DictionaryTest {
 		//fail("Not yet implemented");
 		Dictionary dict = new Dictionary();
 		LetterNode dictNode = dict.getDict();
+		assertTrue("fugged is not in dictionary",dict.containWord("fugged"));
+		assertFalse("fugatos is actually in dictionary",dict.containWord("fugatos"));
 	}
 
 }

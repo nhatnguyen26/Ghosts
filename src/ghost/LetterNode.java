@@ -11,6 +11,7 @@ public class LetterNode {
 	private char letter;
 	//use HashMap to take advantage of checking for member and access child Node
 	private HashMap<Character,LetterNode> children;
+	private HashMap<Integer,Character> branchDepth;
 	private int depth; //Node know it own depth
 	private LetterNode parent; //Node know it parent
 	
@@ -19,27 +20,22 @@ public class LetterNode {
 		this.parent = null;
 		this.depth = 0;
 		this.children = new HashMap<Character, LetterNode>();
+		this.branchDepth = new HashMap<Integer,Character>();
 	}
 	
 	public LetterNode(char letter) {
+		this();
 		this.letter = letter;
-		this.parent = null;
-		this.depth = 0;
-		this.children = new HashMap<Character, LetterNode>();
 	}
 	
 	public LetterNode(char letter, int depth) {
-		this.letter = letter;
-		this.parent = null;
+		this(letter);
 		this.depth = depth;
-		this.children = new HashMap<Character, LetterNode>();
 	}
 	
 	public LetterNode(char letter, int depth, LetterNode parent) {
-		this.letter = letter;
+		this(letter,depth);
 		this.parent = parent;
-		this.depth = depth;
-		this.children = new HashMap<Character, LetterNode>();
 	}
 	
 	public Iterator<LetterNode> getChildrenIterator(){
@@ -52,6 +48,10 @@ public class LetterNode {
 	
 	public char getLetter(){
 		return this.letter;
+	}
+	
+	public LetterNode getParent(){
+		return this.parent;
 	}
 	
 	/*
@@ -74,6 +74,10 @@ public class LetterNode {
 	
 	public LetterNode getChild(char letter) {
 		return this.children.get((Character) letter);
+	}
+	
+	public boolean hasChild(char letter) {
+		return getChild(letter) != null;
 	}
 
 }

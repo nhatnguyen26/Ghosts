@@ -2,11 +2,13 @@ package ghost;
 
 public class CPUPlayer extends Player {
 	
-	private Dictionary myDict;
+	private static Dictionary myDict;
+	private LetterNode currentPlay;
 	
 	public CPUPlayer(int turn){
 		super("CPU",turn);
-		myDict = new Dictionary();
+		CPUPlayer.myDict = new Dictionary();
+		this.currentPlay = CPUPlayer.myDict.getDict();
 	}
 
 	@Override
@@ -17,9 +19,11 @@ public class CPUPlayer extends Player {
 	
 	public char bestMove() {
 		char bestChar = ' ';
-		
+
 		
 		return bestChar;
 	}
+	
+	
 
 }

@@ -76,5 +76,16 @@ public class Dictionary {
 	public LetterNode getDict(){
 		return root;
 	}
+	
+	public boolean containWord(String word){
+		int d;
+		LetterNode curr = root;
+		for (d = 0; d < word.length(); d++) {
+			curr = curr.getChild((Character) word.charAt(d));
+			if (curr == null)
+				break;
+		}
+		return d == word.length();
+	}
 
 }
