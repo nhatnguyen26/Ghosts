@@ -17,9 +17,16 @@ public class Ghost {
 	private StringBuffer strInPlay;
 	private ArrayList<Player> players;
 	
+	public Ghost() {
+		gameDict = new Dictionary();
+		this.gameState = gameDict.getDict();
+		this.players = new ArrayList<Player>();
+		this.players.add(new CPUPlayer("1",0,gameDict));
+		this.players.add(new CPUPlayer("2",1, gameDict));
+	}
+	
 	public Ghost(String humanName) {
 		gameDict = new Dictionary();
-
 		this.gameState = gameDict.getDict();
 		this.players = new ArrayList<Player>();
 		this.players.add(new HumanPlayer(humanName,0));
