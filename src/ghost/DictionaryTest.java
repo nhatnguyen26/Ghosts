@@ -21,7 +21,7 @@ public class DictionaryTest {
 	public void testDepth() {
 		Dictionary dict = new Dictionary("src/TEST");
 		LetterNode dictNode = dict.getDict();
-		assertFalse("fugged is not in dictionary",dict.containWord("linings"));
+		assertFalse("awaken is in dictionary",dict.containWord("awaken"));
 	}
 
 

@@ -78,6 +78,11 @@ public class Dictionary {
 		return root;
 	}
 	
+	/*
+	 * Step down the root to check for word
+	 * @param word word to check
+	 * @return if word is imported into the game's dictionary 
+	 */
 	public boolean containWord(String word){
 		int d;
 		LetterNode curr = root;
