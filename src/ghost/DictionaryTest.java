@@ -19,8 +19,9 @@ public class DictionaryTest {
 	
 	@Test
 	public void testDepth() {
-		Dictionary dict = new Dictionary("src/TEST",2);
+		Dictionary dict = new Dictionary("src/TEST");
 		LetterNode dictNode = dict.getDict();
+		assertFalse("fugged is not in dictionary",dict.containWord("linins"));
 	}
 
 

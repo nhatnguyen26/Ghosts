@@ -46,16 +46,14 @@ public class CPUPlayer extends Player {
 		Iterator<Character> children = letter.getChildrenIterator();
 		char testChar;
 		LetterNode node;
+		boolean forced = false;
 		while (children.hasNext()) {
 			testChar = children.next();
 			node = letter.getChild(testChar);
-			if (!this.isForceWin(node)) {
-				return false;
-			}
-			
+			forced = forced || this.isForceWin(node);
 		}
 		
-		return true;
+		return forced;
 	}
 	
 

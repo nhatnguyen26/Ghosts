@@ -60,8 +60,8 @@ public class Dictionary {
 				if (!line.startsWith(prevLine) && line.length() >= minLength) {
 					added++;
 					root.addWord(line);
+					prevLine = line;
 				}
-				prevLine = line;
 			}
 			System.out.println("Total from file: " + total);
 			System.out.println("Total added: " + added);
