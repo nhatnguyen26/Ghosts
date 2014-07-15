@@ -81,7 +81,7 @@ public class Ghost {
 		Ghost game = new Ghost("Nhat");
 		Player winner = game.playGame();
 		System.out.println("Winner is: " + winner.getName());
-
+		
 	}
 
 }

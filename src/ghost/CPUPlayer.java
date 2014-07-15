@@ -22,7 +22,9 @@ public class CPUPlayer extends Player {
 	@Override
 	public char play(char lastPlayed) {
 		// TODO Auto-generated method stub
-		currentPlay = currentPlay.getChild(lastPlayed);
+		// if the CPU play first
+		if (lastPlayed != ' ')
+			currentPlay = currentPlay.getChild(lastPlayed);
 		return bestMove();
 	}
 	

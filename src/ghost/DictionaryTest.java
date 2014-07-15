@@ -9,7 +9,7 @@ public class DictionaryTest {
 
 	@SuppressWarnings("unused")
 	@Test
-	public void testDictionary() {
+	public void testDictionary1() {
 		//fail("Not yet implemented");
 		Dictionary dict = new Dictionary();
 		LetterNode dictNode = dict.getDict();
@@ -18,7 +18,7 @@ public class DictionaryTest {
 	}
 	
 	@Test
-	public void testDepth() {
+	public void testDictionary2() {
 		Dictionary dict = new Dictionary("src/TEST");
 		LetterNode dictNode = dict.getDict();
 		assertFalse("awaken is in dictionary",dict.containWord("awaken"));
