@@ -48,7 +48,7 @@ public class Ghost {
 	}
 	
 	private boolean isGhostFinished() {
-		return this.gameState.isChildrenEmpty();
+		return this.gameState.isLeafNode();
 	}
 	
 	public Player playGame(){
@@ -71,7 +71,7 @@ public class Ghost {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Ghost game = new Ghost("src/TEST",2,"Nhat");
+		Ghost game = new Ghost("Nhat");
 		Player winner = game.playGame();
 		System.out.println("Winner is: " + winner.getName());
 

@@ -12,7 +12,6 @@ public class LetterNode {
 	private char letter;
 	//use HashMap to take advantage of checking for member and access child Node
 	private HashMap<Character,LetterNode> children;
-	private HashMap<Character,ArrayList<Integer>> childDepths;
 	private int depth; //Node know it own depth
 	private LetterNode parent; //Node know it parent
 	
@@ -21,7 +20,6 @@ public class LetterNode {
 		this.parent = null;
 		this.depth = 0;
 		this.children = new HashMap<Character, LetterNode>();
-		this.childDepths = new HashMap<Character,ArrayList<Integer>>();
 	}
 	
 	public LetterNode(char letter) {
@@ -59,7 +57,7 @@ public class LetterNode {
 		extendChildren(word);
 	}
 	
-	public boolean isChildrenEmpty() {
+	public boolean isLeafNode() {
 		return this.children.isEmpty();
 	}
 	
@@ -79,13 +77,6 @@ public class LetterNode {
 			this.children.put(firstLetter, node);
 		}
 		
-		ArrayList<Integer> possDepths = this.childDepths.get((Character) firstLetter);
-		if (possDepths == null) {
-			possDepths = new ArrayList<Integer>();
-			this.childDepths.put(firstLetter, possDepths);
-		}
-		possDepths.add(word.length());
-		
 		node.extendChildren(subStr);
 
 	}
@@ -98,8 +89,4 @@ public class LetterNode {
 		return getChild(letter) != null;
 	}
 	
-	public ArrayList<Integer> getChildDepths(char letter) {
-		return this.childDepths.get((Character) letter);
-	}
-
 }

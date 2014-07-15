@@ -19,7 +19,7 @@ public abstract class Player {
 		this.turn = turn;
 	}
 	
-	public int Turn(){
+	public int myTurn(){
 		return this.turn;
 	}
 	

@@ -1,6 +1,5 @@
 package ghost;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CPUPlayer extends Player {
@@ -23,10 +22,13 @@ public class CPUPlayer extends Player {
 	private char bestMove() {
 		char testChar, bestChar = ' ';
 		Iterator<Character> children = this.currentPlay.getChildrenIterator();
+		LetterNode node;
 		while (children.hasNext()){
 			testChar = children.next();
-			if (isForceWin(testChar))
+			node = this.currentPlay.getChild(testChar);
+			if (this.isForceWin(node)){
 				bestChar = testChar;
+			}
 		}
 		
 		currentPlay = currentPlay.getChild(bestChar);
@@ -38,14 +40,22 @@ public class CPUPlayer extends Player {
 	 * CPU want to pick the even-depth branch to guarantee a win.
 	 * 	@param letter option to check against the current game tree.
 	 */
-	private boolean isForceWin(char letter) {
-		boolean forceWin = true;
-		ArrayList<Integer> childDepths = this.currentPlay.getChildDepths(letter);
-		for(Integer i : childDepths) {
-			if (i.intValue() % 2 != 0)
-				forceWin = false;
+	private boolean isForceWin(LetterNode letter) {
+		if (letter.isLeafNode())
+			return letter.getDepth() % 2 == this.myTurn();
+		Iterator<Character> children = letter.getChildrenIterator();
+		char testChar;
+		LetterNode node;
+		while (children.hasNext()) {
+			testChar = children.next();
+			node = letter.getChild(testChar);
+			if (!this.isForceWin(node)) {
+				return false;
+			}
+			
 		}
-		return forceWin;
+		
+		return true;
 	}
 	
 
