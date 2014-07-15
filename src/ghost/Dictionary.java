@@ -55,6 +55,7 @@ public class Dictionary {
 		int total = 0, added = 0;
 		try {
 			while ((line = reader.readLine()) != null) {
+				line = line.toLowerCase();
 				total++;
 				//if a word is already complete, the longer word start with previous doesn't matter
 				if (!line.startsWith(prevLine) && line.length() >= minLength) {
