@@ -17,6 +17,7 @@ public class HumanPlayer extends Player {
 		inputStr = input.nextLine();
 		while (inputStr.length() > 1) {
 			System.out.print("Next character: ");
+			inputStr = input.nextLine();
 		}
 		return inputStr.charAt(0);
 	}

@@ -7,7 +7,6 @@ import org.junit.Test;
 
 public class DictionaryTest {
 
-	@SuppressWarnings("unused")
 	@Test
 	public void testDictionary1() {
 		//fail("Not yet implemented");
@@ -15,13 +14,17 @@ public class DictionaryTest {
 		LetterNode dictNode = dict.getDict();
 		assertTrue("fugged is not in dictionary",dict.containWord("fugged"));
 		assertFalse("fugatos is actually in dictionary",dict.containWord("fugatos"));
+		dictNode = dictNode.getChild('n');
+		System.out.println(dictNode.numWords());
+		System.out.println(dictNode);
 	}
 	
 	@Test
 	public void testDictionary2() {
-		Dictionary dict = new Dictionary("src/TEST");
+		Dictionary dict = new Dictionary("src/TEST",2);
 		LetterNode dictNode = dict.getDict();
-		assertFalse("awaken is in dictionary",dict.containWord("awaken"));
+		System.out.println(dictNode.getChild('b').numWords());
+		//assertFalse("awaken is in dictionary",dict.containWord("awaken"));
 	}
 
 

@@ -1,5 +1,4 @@
 package ghost;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -88,5 +87,35 @@ public class LetterNode {
 	public boolean hasChild(char letter) {
 		return getChild(letter) != null;
 	}
+	
+	public int numWords(){
+		if (this.isLeafNode())
+			return 1;
+		int sum = 0;
+		for (LetterNode node : this.children.values()) {
+			sum += node.numWords();
+		}
+		return sum;
+	}
+	
+	public String toString(){
+		return this.printTree(0);
+	}
+	
+	public String printTree(int depth){
+		StringBuffer str = new StringBuffer();
+		for (int i = 0; i < depth; i++) {
+			str.append(' ');
+		}
+		str.append(this.letter);
+		if (!this.isLeafNode()) {
+			for (LetterNode node : this.children.values()) {
+				str.append("\n");
+				str.append(node.printTree(depth + 1));
+			}		
+		}
+		return str.toString();
+	}
+	
 	
 }
